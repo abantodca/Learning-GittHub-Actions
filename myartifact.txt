@@ -1,0 +1,1 @@
+This is my first artifact uploaded via GitHub Actions.
