@@ -3,8 +3,6 @@ on:
   push:
     branches:
       - dev
-      - 'feature-*'
-      - main
   pull_request:
     branches:
       - main
@@ -51,4 +49,4 @@ jobs:
           pwd
           ls -ltr
       - name: Step for PR
-        run: exit 1
+        run: exit 0
