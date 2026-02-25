@@ -1,5 +1,4 @@
 name: my-first-workflow
-# To get a trigger on every push in this repo
 on:
   push:
 jobs:
