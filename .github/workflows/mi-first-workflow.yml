@@ -19,3 +19,8 @@ jobs:
           pwd
           ls -ltr
           hostname
+      - name: Upload Single file
+        uses: actions/upload-artifact@v5.0.0
+        with:
+          name: single_file
+          path: ./myartifact.txt
