@@ -55,7 +55,7 @@ jobs:
           pwd
           ls -ltr
       - name: Download single file artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5.0.0
         with:
           name: single_file
       - name: cheking current directory post download
