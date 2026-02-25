@@ -1,5 +1,5 @@
 name: my-first-workflow
-# To get a tigger on very push in this repo
+# To get a trigger on every push in this repo
 on:
   push:
 jobs:
@@ -13,14 +13,36 @@ jobs:
           ls -ltr
           hostname
       - name: Checkout
-        uses: actions/checkout@v5.0.0
+        uses: actions/checkout@v4
       - name: Step-3
         run: |
-          pwd
-          ls -ltr
-          hostname
+          echo `pwd` >> myartifact.txt
+          mkdir artifacts
+          ls -ltr > artifacts/list.txt
+          hostname > artifacts/hostname.txt
       - name: Upload Single file
-        uses: actions/upload-artifact@v5.0.0
+        uses: actions/upload-artifact@v4
         with:
           name: single_file
           path: ./myartifact.txt
+
+      - name: Upload Directory
+        uses: actions/upload-artifact@v4
+        with:
+          name: directory_artifacts
+          path: artifacts/
+      - name: Upload from multiple paths
+        uses: actions/upload-artifact@v4
+        with:
+          name: multiple_paths
+          path: |
+            ./myartifact.txt
+            artifacts/
+      - name: Upload from multiple paths with exclusions
+        uses: actions/upload-artifact@v4
+        with:
+          name: multiple_paths_with_exclusions
+          path: |
+            ./myartifact.txt
+            artifacts/
+            !**/hostname.txt
