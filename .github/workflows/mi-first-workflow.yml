@@ -59,7 +59,7 @@ jobs:
       - name: Refferring context or in-build variables
         run: |
           echo "[INFO] Triggered by ${{ github.event_name }}."
-          echo "[INFO] New changes are added by ${{ github.actor }} in ${{ github.ref_name }} branch."
+          echo "[INFO] New changes are added by ${{ github.actor }} in ${{ github.head_ref }} branch."
           echo "[INFO] Current Step in running on ${{ runner.os }}"
           echo "[INFO] current JOB ID is ${{job.check_run_id}}."
   staging:
@@ -72,7 +72,7 @@ jobs:
         run: echo "[INFO] Password for ${{ vars.USER }} is ${{ secrets.PASSWORD }}."
     environment:
       name: STAGING
-    if: github.head_ref == 'refs/heads/dev'
+    if: github.head_ref == 'dev'
   production:
     name: PRODUCTION DEPLOYMENT
     runs-on: ubuntu-latest
